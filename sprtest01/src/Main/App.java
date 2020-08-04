@@ -3,6 +3,8 @@ package Main;
 import java.util.Scanner;
 
 import Main.DTO.RegisterRequest;
+import Main.service.ChangePasswordService;
+import Main.service.MemberInfoPrinter;
 import Main.service.MemberListPrinter;
 import Main.service.MemberRegisterService;
 
@@ -44,14 +46,29 @@ public class App { //자바로 회원관리하는 방법 알아보기(실제로 
 			mrs.regist(req);
 			
 		}else if(command.startsWith("change")) { 
-		
+			   String [] arg = command.split(" ");
+			   if(arg.length != 4) {
+				   printHelp();
+				   continue;
+			   }
+			   ChangePasswordService changePwSvc = new ChangePasswordService();
+			   changePwSvc.changePassword(arg[1],arg[2],arg[3]);
+			
 		}else if(command.equals("list")) { 
 			MemberListPrinter listPrint = new MemberListPrinter(); //의존객체 만듦
 			listPrint.printAll();
 		
 		}else if(command.startsWith("info")) { 
-		
+		   String [] arg = command.split(" ");
+		   if(arg.length != 2) {
+			   printHelp();
+			   continue;
+		   }
+			MemberInfoPrinter infoPrinter = new MemberInfoPrinter();//서비스 생성
+			infoPrinter.printMemberInfo(arg[1]);
+			
 		}else if(command.equals("exit")) { 
+			System.out.println("프로그램이 종료되었습니다.");
             System.exit(0);
 		
 		}
