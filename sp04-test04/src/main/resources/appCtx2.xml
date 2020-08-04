@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                              http://www.springframework.org/schema/beans/spring-beans.xsd">
+      
+       <bean id="memberRegisterService" class="Main.service.MemberRegisterService" > 
+       <constructor-arg name="memberDAO" ref="memberDAO"></constructor-arg> 
+       </bean>
+       
+       <bean id="memberListPrinter" class="Main.service.MemberListPrinter" > 
+       <constructor-arg name="memberDAO" ref="memberDAO"></constructor-arg> 
+       <constructor-arg name="printer" ref="printer"></constructor-arg> 
+       </bean>
+       
+       <bean id="changePasswordService" class="Main.service.ChangePasswordService" > 
+       <property name="memberDAO" ref="memberDAO"></property>
+       </bean>       
+       <!-- ChangePasswordService changePasswordService = new ChangePasswordService()
+            changePasswordService.setMemberDAO(memberDAO); 와 같다-->
+       
+       <bean id="memberInfoPrinter" class="Main.service.MemberInfoPrinter" > 
+       <property name="memberDAO" ref="memberDAO"></property>
+       <property name="printer" ref="printer"></property>
+       </bean> 
+       
+     
+       
+</beans>
