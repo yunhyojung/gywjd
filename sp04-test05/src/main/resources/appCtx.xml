@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+       <!-- 의존객체 자동주입(객체 생성만 하면 됨) -->
+       <context:annotation-config /><!-- context:annotation-config가 api임(api를 사용하겠다는 뜻) -->
+       <bean id="memberDAO" class="sp04.sp04_test05.DTO.MemberDAO" />
+       
+       <bean id="printer" class="sp04.sp04_test05.service.MemberPrinter" />
+       <bean id="printer1" class="sp04.sp04_test05.service.MemberPrinter" >
+            <qualifier value="sysout" /><!-- 원래는 싱글톤이나 두개를 만들고 싶다면 qualifier 사용 -->
+       </bean>
+       <bean id="printer2" class="sp04.sp04_test05.service.MemberPrinter" >
+            <qualifier value="sysout1" />
+       </bean>
+              
+       <bean id="memberRegisterService" class="sp04.sp04_test05.service.MemberRegisterService" /> 
+
+       
+       <bean id="memberListPrinter" class="sp04.sp04_test05.service.MemberListPrinter" /> 
+
+       <bean id="changePasswordService" class="sp04.sp04_test05.service.ChangePasswordService" /> 
+
+       <bean id="memberInfoPrinter" class="sp04.sp04_test05.service.MemberInfoPrinter" /> 
+
+     
+       
+</beans>
