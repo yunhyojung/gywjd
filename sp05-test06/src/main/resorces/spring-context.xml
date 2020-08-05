@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+                           <!-- 컨트롤러로서 자유롭게 사용하겠다라는 뜻    @controller -->
+                           <mvc:annotation-driven/>
+                           
+                           <!-- root 설정 -->
+                           <mvc:default-servlet-handler/>
+                           
+                           <!-- 뷰 위치 확인 (prefix(앞): 웹앱에 있다는 뜻) -->
+                           <mvc:view-resolvers>
+                                 <mvc:jsp prefix="/WEB-INF/view/"/>
+                                 <!-- /: webapp 밑에 있다는 뜻 , 설정 안하면 찾지 못함  prefix를 적어줌으로 앞으로 적을 때 생략 가능-->
+                                 <mvc:jsp suffix=".jsp"/>
+                                 <!-- :뒤 , suffix를 생략하겠다. -->
+                           </mvc:view-resolvers>
+                           
+                           <!-- 의존객체 자동주입 -->
+                           <context:annotation-config />
+                           
+</beans>
